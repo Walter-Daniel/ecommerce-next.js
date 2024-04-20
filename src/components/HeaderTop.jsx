@@ -1,10 +1,21 @@
 'use client'
 
-import React from 'react'
+import React, {useState, UseEffect, useEffect } from 'react';
 import {BsFacebook, BsTwitter, BsInstagram, BsLinkedin} from "react-icons/bs";
 import {Select, SelectItem} from "@nextui-org/react";
 
 const HeaderTop = () => {
+    const [isSpecialOffer, setIsSpecialOffer] = useState(false);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+        setIsSpecialOffer(prevState => !prevState); // Cambia el estado anterior
+        }, 3000);
+
+        // Limpia el timeout cuando el componente se desmonta para evitar fugas de memoria
+        return () => clearTimeout(timeout);
+    }, [isSpecialOffer]);
+
   return (
     <div className='border-b boder-gray-200 hidden sm:block'>
       <div className='container py-4'>
@@ -23,9 +34,15 @@ const HeaderTop = () => {
               <BsLinkedin />
             </div>
           </div>
-          <div className='text-gray-500 text-[12px]'>
-            <strong>FREE SHIPPING </strong>
-             available on orders over $55 this week!
+          <div className='text-gray-500 text-[16px]'>
+            {/* <strong>FREE SHIPPING </strong>
+             available on orders over $55 this week! */}
+             <strong>
+        {isSpecialOffer
+          ? "Special Offer: Get 10% off on all orders today!"
+          : "FREE SHIPPING available on orders over $55 this week!"
+        }
+      </strong>
           </div>
           <div className='flex gap-4'>
             <select name="currency" id="currency" className='text-gray-500 text-xs w-24 border border-gray-300 rounded-md py-1 px-3 cursor-pointer'>
