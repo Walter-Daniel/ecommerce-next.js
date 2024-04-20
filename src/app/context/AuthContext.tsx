@@ -1,11 +1,12 @@
 'use client'
+import { User } from 'firebase/auth';
 import React, { createContext, useState } from 'react';
 
 export type AuthState = {
-  login: () => void;
   logout: () => void;
-  isAuthenticated: boolean;
-  user: string
+  user: User | null;
+  googleSignIn: () => void;
+  loading: boolean;
 };
 
 export const AuthContext = createContext<AuthState>({} as AuthState);

@@ -1,13 +1,31 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button} from '@nextui-org/react';
 import { UserAuth } from '../context/AuthProvider';
 
 
 export const NavbarComponent = () => {
-    const { user } = UserAuth();
-    console.log(user)
+    const { user, logout } = UserAuth();
+    const [isLoading, setIsLoading] = useState(true)
+
+    const handleLogout = async() => {
+        try {
+            await logout()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+      const checkAuth = async() => {
+        await new Promise((resolve) => setTimeout(resolve, 400))
+        setIsLoading(false)
+      }
+      checkAuth();
+    }, [user])
+    
+
   return (
     <Navbar position="static">
       <NavbarBrand>
@@ -26,11 +44,24 @@ export const NavbarComponent = () => {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem>
-          <Button as={Link} color="primary" href="/login" variant="flat">
-            Sign In
-          </Button>
-        </NavbarItem>
+        {
+            isLoading ? null : !user ? (
+                <NavbarItem>
+                    <Button as={Link} color="primary" href="/login" variant="flat">
+                        Sign In
+                    </Button>
+                </NavbarItem>
+            ) : (
+                <NavbarItem className='flex items-center gap-2'>
+                    <p>Hi, {user.displayName}!</p>
+                    <Button onClick={handleLogout} color="primary" variant="flat">
+                        Logout
+                    </Button>
+                </NavbarItem>
+            )
+        }
+        
+        
       </NavbarContent>
     </Navbar>
   )

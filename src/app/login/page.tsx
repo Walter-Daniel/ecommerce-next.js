@@ -1,8 +1,20 @@
 'use client'
 
 import { Button } from "@nextui-org/react";
+import { UserAuth } from "../context/AuthProvider";
 
 export default function LoginPage() {
+
+  const { googleSignIn } = UserAuth();
+
+  const handleGoogleSignIn = async() => {
+    try {
+      await googleSignIn();  
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="container mx-auto py-8 min-h-[100vh] justify-center content-center  bg-black text-white">
       <div className="w-[100%] flex flex-col justify-center items-center ">
@@ -29,6 +41,7 @@ export default function LoginPage() {
             </div>
             <div className="pt-4">
                 <Button type="submit">Login</Button>
+                <Button onClick={handleGoogleSignIn}>Google</Button>
             </div>
         </form>
       </div>

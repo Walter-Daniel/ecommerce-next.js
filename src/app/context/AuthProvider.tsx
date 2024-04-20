@@ -1,27 +1,45 @@
 'use client'
-import { FC, useContext, useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
+import { signInWithPopup, signOut, onAuthStateChanged,  GoogleAuthProvider, User} from 'firebase/auth';
+import { auth } from '../firebase';
+
 
 interface AuthProviderProps {
     children: JSX.Element | JSX.Element[]
 }
 
 export const AuthContextProvider: FC<AuthProviderProps> = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [user, setUser] = useState('Client')
+    const [user, setUser] = useState<User | null>(null)
+    const [loading, setLoading] = useState<boolean>(false)
   
-    const login = () => {
-      // Lógica de inicio de sesión
-      setIsAuthenticated(true);
-    };
+
+    const googleSignIn = () => {
+        const provider = new GoogleAuthProvider()
+        signInWithPopup(auth, provider)
+        setLoading(true)
+    }
+
   
     const logout = () => {
       // Lógica de cierre de sesión
-      setIsAuthenticated(false);
+      signOut(auth)
+      setLoading(false)
     };
+
+    useEffect(() => {
+
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser)
+        })
+
+        return () => unsubscribe()
+     
+    }, [user])
+    
   
     return (
-      <AuthContext.Provider value={{ login, logout, isAuthenticated, user }}>
+      <AuthContext.Provider value={{ logout, loading, user, googleSignIn }}>
         {children}
       </AuthContext.Provider>
     );
