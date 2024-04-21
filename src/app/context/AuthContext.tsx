@@ -6,6 +6,7 @@ export type AuthState = {
   logout: () => void;
   user: User | null;
   googleSignIn: () => void;
+  emailAndPasswordSignIn: (email: string, password: string, displayName:string) => Promise<void>;
   loading: boolean;
 };
 

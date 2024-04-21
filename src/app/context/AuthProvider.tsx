@@ -1,7 +1,7 @@
 'use client'
 import { FC, useContext, useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { signInWithPopup, signOut, onAuthStateChanged,  GoogleAuthProvider, User} from 'firebase/auth';
+import { signInWithPopup, signOut, onAuthStateChanged,  GoogleAuthProvider, User, createUserWithEmailAndPassword, updateCurrentUser, updateProfile} from 'firebase/auth';
 import { auth } from '../firebase';
 
 
@@ -18,6 +18,17 @@ export const AuthContextProvider: FC<AuthProviderProps> = ({ children }) => {
         const provider = new GoogleAuthProvider()
         signInWithPopup(auth, provider)
         setLoading(true)
+    }
+
+    const emailAndPasswordSignIn = async(email:string, password:string, displayName: string) => {
+      try {
+        const resp = await createUserWithEmailAndPassword(auth, email, password);
+        const { user } = resp;
+        await updateProfile(auth.currentUser, {displayName})
+        setUser(user)
+      } catch (error) {
+        console.log(error)
+      }
     }
 
   
@@ -39,7 +50,7 @@ export const AuthContextProvider: FC<AuthProviderProps> = ({ children }) => {
     
   
     return (
-      <AuthContext.Provider value={{ logout, loading, user, googleSignIn }}>
+      <AuthContext.Provider value={{ logout, loading, user, googleSignIn, emailAndPasswordSignIn }}>
         {children}
       </AuthContext.Provider>
     );
