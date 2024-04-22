@@ -2,7 +2,7 @@ import React from 'react'
 import {BsSearch} from 'react-icons/bs'
 import {BiUser} from "react-icons/bi"
 import {FiHeart} from "react-icons/fi"
-import {HiOutlineShoppingBag} from "react-icons/hi"
+import { LuShoppingCart } from "react-icons/lu";
 
 const HeaderMain = () => {
   return (
@@ -27,7 +27,7 @@ const HeaderMain = () => {
                 </div>
                 
                 <div className='relative'>
-                    <HiOutlineShoppingBag />
+                    <LuShoppingCart />
                     <div className='bg-red-600 rounded-full absolute top-0 right-0 w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1'>
                         0
                     </div>
