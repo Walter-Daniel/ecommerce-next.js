@@ -14,7 +14,7 @@ const NavbarSection = () => {
         {navList.map((navItem, index )=> (
           <NavbarItem key={index}>
             <Link color="foreground" href="#" className='navbar__link relative'>
-            {navItem}
+              {navItem}
             </Link>
           </NavbarItem>
         ) )}
