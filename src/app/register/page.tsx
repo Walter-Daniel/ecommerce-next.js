@@ -20,16 +20,20 @@ type Inputs = {
 export default function RegisterPage() {
   const router = useRouter();
 
-  const { emailAndPasswordSignIn } = UserAuth();
+  const { signUp } = UserAuth();
   const { register, handleSubmit, formState: {errors}, reset } = useForm<Inputs>({
     resolver: zodResolver(userSchema)
   });
 
-  const onSubmit:SubmitHandler<Inputs> = data => {
+  const createUser = (email:string, password:string, displayName:string) => {
+    signUp(email, password, displayName)
+  }
+
+  const onSubmit:SubmitHandler<Inputs> = (data) => {
     const { email, password, displayName } = data;
-    emailAndPasswordSignIn(email, password, displayName)
+    createUser(email, password, displayName)
     reset()
-    router.push("/");
+    router.push("/profile");
   }
 
   return (

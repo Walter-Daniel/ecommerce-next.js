@@ -1,7 +1,7 @@
 'use client'
 import { FC, useContext, useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { signInWithPopup, signOut, onAuthStateChanged,  GoogleAuthProvider, User, createUserWithEmailAndPassword, updateCurrentUser, updateProfile} from 'firebase/auth';
+import { signInWithPopup, signOut, onAuthStateChanged,  GoogleAuthProvider, User, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword} from 'firebase/auth';
 import { auth } from '../firebase';
 
 
@@ -12,45 +12,62 @@ interface AuthProviderProps {
 export const AuthContextProvider: FC<AuthProviderProps> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
-  
-
-    const googleSignIn = () => {
-        const provider = new GoogleAuthProvider()
-        signInWithPopup(auth, provider)
-        setLoading(true)
-    }
-
-    const emailAndPasswordSignIn = async(email:string, password:string, displayName: string) => {
-      try {
-        const resp = await createUserWithEmailAndPassword(auth, email, password);
-        const { user } = resp;
-        await updateProfile(auth.currentUser, {displayName})
-        setUser(user)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-
-  
-    const logout = () => {
-      // Lógica de cierre de sesión
-      signOut(auth)
-      setLoading(false)
-    };
 
     useEffect(() => {
 
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser)
-        })
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+          setUser(currentUser)
+      })
+      return () => unsubscribe()
+   
+  }, [user])
 
-        return () => unsubscribe()
-     
-    }, [user])
+    //Sign Up with email and password
+    const signUp = async(email:string, password:string, displayName: string) => {
+      try {
+        setLoading(true)
+        const resp = await createUserWithEmailAndPassword(auth, email, password);
+        const { user: firebaseUser } = resp;
+        //Update User displayName 
+        await updateProfile(auth.currentUser!, {displayName})
+        setUser(firebaseUser) // Update user state here
+      } catch (error) {
+        console.log(error)
+      }finally{
+        setLoading(false)
+      }
+    }
     
+
+    //Login with google
+    const googleSignIn = () => {
+      const provider = new GoogleAuthProvider()
+      signInWithPopup(auth, provider)
+  }
+
+    //Login with email and password
+    const signIn = async(email:string, password:string) => {
+      try {
+        setLoading(true)
+        const resp = await signInWithEmailAndPassword(auth, email, password);
+        const { user: firebaseUser } = resp;
+        setUser(firebaseUser)
+
+      } catch (error) {
+        console.log(error)
+      }finally {
+        setLoading(false)
+      }
+    }
+
+    //Logout
+    const logout = () => {
+      signOut(auth)
+      setLoading(false)
+    };
   
     return (
-      <AuthContext.Provider value={{ logout, loading, user, googleSignIn, emailAndPasswordSignIn }}>
+      <AuthContext.Provider value={{ logout, loading, user, googleSignIn, signUp, signIn }}>
         {children}
       </AuthContext.Provider>
     );

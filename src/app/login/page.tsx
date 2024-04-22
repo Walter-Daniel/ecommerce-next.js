@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
 import { UserAuth } from "../context/AuthProvider";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { userSchema } from "@/validations/userSchema";
+import { signInSchema, userSchema } from "@/validations/userSchema";
 
 type Inputs = {
   email: string;
@@ -17,9 +17,10 @@ type Inputs = {
 
 export default function LoginPage() {
 
-  const { googleSignIn, user } = UserAuth();
-  const { register, handleSubmit, formState: {errors} } = useForm<Inputs>({
-    resolver: zodResolver(userSchema)
+  const { googleSignIn, user, signIn } = UserAuth();
+  const router = useRouter();
+  const { register, handleSubmit, formState: {errors}, reset } = useForm<Inputs>({
+    resolver: zodResolver(signInSchema)
   });
   const [isLoading, setIsLoading] = useState(true)
 
@@ -43,16 +44,20 @@ export default function LoginPage() {
     return  redirect('/')
   }
 
+  const onSubmit:SubmitHandler<Inputs> = ({email, password}) => {
+    signIn(email, password);
+    reset();
+    router.push('/profile')
+  }
+
   // if(isLoading){
   //   return <p>Loading...</p>
   // }
 
-  console.log(errors)
-
   return (
     <div className="py-8 min-h-[100vh] justify-center content-center  bg-black">
       <div className="w-[100%] flex flex-col justify-center items-center ">
-        <form onSubmit={handleSubmit((data) => console.log(data))} className="bg-white p-20 xs:w-3/4 md:w-1/3 mx-auto rounded-xl">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-10 xs:w-3/4 md:w-2/3 lg:w-1/3 mx-auto rounded-xl">
             <h2 className="uppercase text-2xl text-end">Ecommerce</h2>
             {/* Email */}
             <div className="flex flex-col pb-5 relative">

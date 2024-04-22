@@ -24,3 +24,15 @@ export const userSchema = z.object({
     message: 'Passwords must match',
     path: ['confirmPassword']
 })
+
+
+export const signInSchema = z.object({
+    email: z.string().email({
+        message: 'Please enter a valid email'
+    }),
+    password: z.string().min(6, {
+        message: 'Password must be at least 6 characters long'
+    }).max(12, {
+        message: 'Password must be less than 12 characters long'
+    })
+})

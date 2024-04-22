@@ -3,17 +3,23 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button} from '@nextui-org/react';
 import { UserAuth } from '../context/AuthProvider';
+import { useRouter } from 'next/navigation';
+import { auth } from '../firebase';
+
 
 export const NavbarComponent = () => {
-    const { user, logout } = UserAuth();
-    const [isLoading, setIsLoading] = useState(true)
-    useEffect(() => {
-        const checkAuth = async() => {
-            await new Promise((resolve) => setTimeout(resolve, 800))
-            setIsLoading(false)
-        }
-        checkAuth();
-    }, [user])
+
+    const { user, logout, loading } = UserAuth();
+    // const [isLoading, setIsLoading] = useState(true);
+    const router = useRouter();
+    
+    // useEffect(() => {
+    //     const checkAuth = async() => {
+    //         await new Promise((resolve) => setTimeout(resolve, 800))
+    //         setIsLoading(false)
+    //     }
+    //     checkAuth();
+    // }, [user])
 
     const handleLogout = async() => {
         try {
@@ -42,7 +48,7 @@ export const NavbarComponent = () => {
       </NavbarContent>
       <NavbarContent justify="end">
         {
-            isLoading ? null : !user ? (
+            loading ? null : !user ? (
                 <NavbarItem>
                     <Button as={Link} color="primary" href="/login" variant="flat">
                         Sign In
