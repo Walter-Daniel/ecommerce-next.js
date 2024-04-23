@@ -1,10 +1,15 @@
-'use client'
+
 import { Button } from "@nextui-org/react";
+import Hero from "@/components/Hero";
+import ProductList from "@/components/ProductList";
 
 export default function Home() {
   return (
-    <div>
-            <Button color="primary">Click me</Button>
-    </div>
+    <main>
+      <Hero />
+      <div>
+        <ProductList />
+      </div>
+    </main>
   );
 }
