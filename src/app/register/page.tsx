@@ -44,7 +44,7 @@ export default function RegisterPage() {
 
   return (
     <div className="bg-top bg-no-repeat bg-cover h-screen" style={{ backgroundImage: 'url(/auth.jpg)' }}>
-      <div className="lg:pr-44 w-[100%] h-[100%] flex justify-center lg:justify-end items-center">
+      <div className="lg:pr-44 w-[100%] h-[100%] flex justify-center lg:justify-end items-center p-40">
         <form onSubmit={handleSubmit(onSubmit)} className="bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg mx-5 md:mx-0 p-5 md:p-10 w-[100%] md:w-2/3 lg:w-1/3 rounded-xl shadow-xl fade-in">
           <div className="flex justify-end mb-5">
             <Image src='/logo.png' alt="Logo" width={200} height={200} style={{ width: 'auto', height:'auto' }}/>
