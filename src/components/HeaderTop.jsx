@@ -3,6 +3,7 @@
 import React, {useState, UseEffect, useEffect } from 'react';
 import {BsFacebook, BsTwitter, BsInstagram, BsLinkedin} from "react-icons/bs";
 import {Select, SelectItem} from "@nextui-org/react";
+import Link from 'next/link';
 
 const HeaderTop = () => {
     const [isSpecialOffer, setIsSpecialOffer] = useState(false);
@@ -45,7 +46,7 @@ const HeaderTop = () => {
       </strong>
           </div>
           <div className='flex gap-4'>
-            <select name="currency" id="currency" className='text-gray-500 text-xs w-24 border border-gray-300 rounded-md py-1 px-3 cursor-pointer'>
+            {/* <select name="currency" id="currency" className='text-gray-500 text-xs w-24 border border-gray-300 rounded-md py-1 px-3 cursor-pointer'>
               <option value="USD $">USD $</option>
               <option value="EUR $">EUR €</option>
               <option value="PesoArg ARS">Peso ARS</option>
@@ -54,7 +55,13 @@ const HeaderTop = () => {
             <select name="language" id="language" className='text-gray-500 text-xs w-24 border border-gray-300 rounded-md py-2 px-3 cursor-pointer'>
               <option value="English">English</option>
               <option value="Spanish">Spanish</option>
-            </select>
+            </select> */}
+            <Link href="#">
+              Log In
+            </Link>
+            <Link href="#">
+              Sign Up
+            </Link>
           </div>
         </div>
         

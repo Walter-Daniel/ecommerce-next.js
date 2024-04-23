@@ -8,8 +8,8 @@ const NavbarSection = () => {
   const navList = ['HOME', 'CATEGORIES', 'MEN', 'WOMEN', 'HOT OFFERS' ]
 
   return (
-    <Navbar shouldHideOnScroll >
-      
+    <Navbar shouldHideOnScroll className='justify-center' >
+    
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {navList.map((navItem, index )=> (
           <NavbarItem key={index}>
@@ -19,18 +19,10 @@ const NavbarSection = () => {
           </NavbarItem>
         ) )}
       </NavbarContent>
-      {/* <NavbarContent justify="end">
-      <Link color="foreground" href="#" className='header_top__icon_wrapper'>
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="default" href="#" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
-      </NavbarContent> */}
+      
     </Navbar>
+
+    
   )
 }
 
