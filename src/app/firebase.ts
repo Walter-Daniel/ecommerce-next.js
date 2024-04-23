@@ -8,12 +8,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAzbZNdFm9480WyDm_ch44PPLm5M_vooww",
-  authDomain: "ecommerce-nextjs-89013.firebaseapp.com",
-  projectId: "ecommerce-nextjs-89013",
-  storageBucket: "ecommerce-nextjs-89013.appspot.com",
-  messagingSenderId: "932790719925",
-  appId: "1:932790719925:web:909b5eb66788a73d66f5fc"
+  apiKey: "AIzaSyDbs76pIdAB6BZtZbWTC2HgL92qM-Z2hRo",
+  authDomain: "nextjs-ff06c.firebaseapp.com",
+  projectId: "nextjs-ff06c",
+  storageBucket: "nextjs-ff06c.appspot.com",
+  messagingSenderId: "313501695118",
+  appId: "1:313501695118:web:a9208eccc5ec13cc6a5ddf"
 };
 
 // Initialize Firebase

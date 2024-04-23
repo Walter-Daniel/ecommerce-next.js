@@ -2,7 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-
 input[type="text"]:invalid + small {
-    display: inline;
+  display: inline;
+}
+
+/****************** EFFECTS ****************/
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.move-in-left {
+  animation: moveInLeft 1s ease-out;
+}
+@keyframes moveInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.move-in-right {
+  animation: moveInRight 1s ease-out;
+}
+@keyframes moveInRight {
+  from {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

@@ -9,6 +9,7 @@ export type AuthState = {
   signUp: (email: string, password: string, displayName:string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   loading: boolean;
+  error: string | null;
 };
 
 export const AuthContext = createContext<AuthState>({} as AuthState);
