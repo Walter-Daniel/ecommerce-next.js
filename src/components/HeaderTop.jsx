@@ -2,11 +2,14 @@
 
 import React, {useState, UseEffect, useEffect } from 'react';
 import {BsFacebook, BsTwitter, BsInstagram, BsLinkedin} from "react-icons/bs";
-import {Select, SelectItem} from "@nextui-org/react";
+import {Button, Select, SelectItem} from "@nextui-org/react";
 import Link from 'next/link';
+import { UserAuth } from '@/app/context/AuthProvider';
 
 const HeaderTop = () => {
     const [isSpecialOffer, setIsSpecialOffer] = useState(false);
+
+    const { user, loading, logout } = UserAuth();
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -16,6 +19,10 @@ const HeaderTop = () => {
         // Limpia el timeout cuando el componente se desmonta para evitar fugas de memoria
         return () => clearTimeout(timeout);
     }, [isSpecialOffer]);
+
+    const handleLogout = () => {
+      logout();
+    }
 
   return (
     <div className='border-b boder-gray-200 hidden sm:block'>
@@ -56,12 +63,22 @@ const HeaderTop = () => {
               <option value="English">English</option>
               <option value="Spanish">Spanish</option>
             </select> */}
-            <Link href="#">
-              Log In
-            </Link>
-            <Link href="#">
-              Sign Up
-            </Link>
+            {
+              loading ? null : (!user) ? (
+                <>
+                  <Link href="/login">
+                    Log In
+                  </Link>
+                  <Link href="/register" >
+                    Sign Up
+                  </Link>
+                </>
+              ): (
+                <Button onClick={handleLogout} >
+                    Logout
+                </Button>
+              )
+            }
           </div>
         </div>
         
