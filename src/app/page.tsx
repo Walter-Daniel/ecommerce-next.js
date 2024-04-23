@@ -1,4 +1,4 @@
-'use client'
+
 import { Button } from "@nextui-org/react";
 import Hero from "@/components/Hero";
 

@@ -17,8 +17,8 @@ const Slide = ({img, title, mainTitle, price }) => {
       <Image
       src={img}
       alt="banner"
-      width={2000}
-      height={2000}
+      width={500}
+      height={300}
       className='w-[100%] h-[300px] md:h-auto rounded-xl object-cover object-right md:object-left-bottom'
        />
     </div>

@@ -9,12 +9,9 @@ const Hero = () => {
   let settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 1,
+    speed: 500,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
-    speed: 4000,
-    autoplaySpeed: 1000,
-    cssEase: "linear"
 
   };
 
@@ -35,15 +32,15 @@ const Hero = () => {
     {
       id: 2,
       img: "/banner-3.jpg",
-      mainTitle: "Sale Offer",
+      title: "Sale Offer",
       mainTitle: "NEW FASHION SUMMER SALE",
       price: "$30"
     }
   ]
 
   return (
-    <div>
-      <div className='slider-container container pt-6 lg:pt-0'>
+    <div className='w-[100%] h-[500px] bg-green-300' >
+      {/* <div className='slider-container container pt-6 lg:pt-0'>
         <Slider {...settings} >
           {slideData.map((item) => {
             return <Slide 
@@ -55,8 +52,13 @@ const Hero = () => {
               />
           })}
         </Slider>
-      </div>
+      </div> */}
+      Carousel
     </div>
+
+
+
+    
   )
 }
 
