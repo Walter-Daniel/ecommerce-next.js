@@ -1,3 +1,85 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="text"]:invalid + small {
+  display: inline;
+}
+
+/****************** EFFECTS ****************/
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.move-in-left {
+  animation: moveInLeft 1s ease-out;
+}
+@keyframes moveInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.move-in-right {
+  animation: moveInRight 1s ease-out;
+}
+@keyframes moveInRight {
+  from {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@layer base {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .header_top__icon_wrapper {
+    @apply bg-gray-200 rounded-md p-[6px] text-[14px] cursor-pointer hover:bg-accent hover:text-white;
+  }
+
+  .navbar__link:hover {
+    color: #D90429;
+    transition: all 0.4s;
+    cursor: pointer;
+  }
+
+  .navbar__link::after {
+    position: absolute;
+    content: "";
+    background-color: #D90429;
+    height: 3px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+    scale: 0;
+    transform-origin: left;
+    transition: all 0.4s;
+  }
+
+  .navbar__link:hover::after {
+    scale: 1;
+  }
+}

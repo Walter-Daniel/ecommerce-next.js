@@ -1,0 +1,38 @@
+[
+    {
+        "image": "https://images.unsplash.com/photo-1597045566677-8cf032ed6634?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "title": "Nike Air Jordan",
+        "description": "Inspired by the original AJ1",
+        "genre": "Men",
+        "category": "footwear",
+        "hot-offer": false,
+        "price": 180.00
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1563178406-4cdc2923acbc?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "title": "Vestido floral",
+        "description": "Vestido veraniego con estampado floral",
+        "genre": "Women",
+        "category": "dress",
+        "hot-offer": true,
+        "price": 45.99
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1556306535-0f09a537f0a3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "title": "Gorra ajustable",
+        "description": "Gorra deportiva ajustable con logo bordado",
+        "genre": "Unisex",
+        "category": "accessories",
+        "hot-offer": true,
+        "price": 25.50
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "title": "Remera blanca unisex",
+        "description": "Remera de algodón con corte clásico y color blanco.",
+        "genre": "Unisex",
+        "category": "shirt",
+        "hot-offer": false,
+        "price": 19.99
+      }
+]
