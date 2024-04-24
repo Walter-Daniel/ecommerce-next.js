@@ -35,7 +35,6 @@ const HeaderMain = () => {
         </div>
 
         <div className=" lg:flex text-gray-500 text-[30px] gap-4">
-          <BiUser />
           <div className="relative hidden">
             <FiHeart />
             <div className="bg-red-600 rounded-full absolute top-0 right-0 w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
@@ -45,7 +44,7 @@ const HeaderMain = () => {
 
           <div className="relative cursor-pointer  ">
             <LuShoppingCart onClick={handleCart} />
-            <div className="bg-red-600 rounded-full absolute top-0 right-0 w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
+            <div className="bg-red-600 hidden rounded-full absolute top-0 right-0 w-[18px] h-[18px] text-[12px] text-white grid place-items-center translate-x-1 -translate-y-1">
               0
             </div>
             {cartOpen ? (

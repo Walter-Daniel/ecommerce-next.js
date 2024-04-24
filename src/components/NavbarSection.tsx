@@ -1,9 +1,11 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Navbar, NavbarContent, NavbarItem, Link } from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react"
 
 const NavbarSection = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   const navList = ['HOME', 'CATEGORIES', 'MEN', 'WOMEN', 'HOT OFFERS'];
   const categories = ['dress', 'footwear', 'accessories', 'shirt'];
 
@@ -66,6 +68,29 @@ const NavbarSection = () => {
           </NavbarItem>
         ))}
       </NavbarContent>
+
+      
+
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+      </NavbarContent>
+
+      <NavbarMenu className='lg:hidden'>
+        {navList.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link
+              className="w-full"
+              color="foreground"
+              href={
+                index != 1 ? `/products/${item.toLowerCase()}` : "#"
+              }
+              size="lg"
+            >
+              {item}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
     </Navbar>
   );
 };
