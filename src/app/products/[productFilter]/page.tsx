@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
 import { collection, getDocs } from "firebase/firestore";
-import { firestore as db } from "@/app/firebase";
+import { db } from "@/app/firebase";
 import { redirect } from "next/navigation";
 
 const ProductFilter: React.FC = async ({ params }) => {
