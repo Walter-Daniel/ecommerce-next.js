@@ -6,6 +6,8 @@ const imgs = [
   "/banner-1.jpg",
   "/banner-2.jpg",
   "/banner-3.jpg",
+  "/banner-4.avif",
+  "/banner-5.avif"
 ];
 
 const ONE_SECOND = 1000;

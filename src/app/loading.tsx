@@ -4,7 +4,7 @@ const Loading = () => {
         <CutoutTextLoader
           height="50rem"
           background="white"
-          imgUrl="/photo-loading.avif"
+          imgUrl="/loading-1.avif"
         />
       </div>
     );

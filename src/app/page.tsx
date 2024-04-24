@@ -6,7 +6,7 @@ import ProductList from "@/components/ProductList";
 export default function Home() {
   return (
     <main>
-      <div className="w-[100%] pt-5 pr-20 pl-20 pb-32">
+      <div className="w-[100%] pt-5 lg:pr-20 pl-20 lg:pb-32">
         <SwipeCarousel />
       </div>
       
