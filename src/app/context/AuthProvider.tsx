@@ -1,4 +1,5 @@
 'use client'
+
 import { FC, useContext, useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { signInWithPopup, signOut, onAuthStateChanged,  GoogleAuthProvider, User, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, setPersistence, browserLocalPersistence} from 'firebase/auth';
@@ -15,30 +16,14 @@ export const AuthContextProvider: FC<AuthProviderProps> = ({ children }) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    // useEffect(() => {
-    //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-    //       setUser(currentUser)
-    //   })
-    //   return () => unsubscribe()
-    // }, [user])
-
-
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
         setLoading(false);
       });
       
-      // Configuración de la persistencia de sesión local
       const persistence = browserLocalPersistence;
       setPersistence(auth, persistence)
-        .then(() => {
-          // La persistencia de sesión se ha configurado correctamente
-          console.log('Persistence')
-        })
-        .catch((error) => {
-          console.error('Error setting persistence:', error);
-        });
     
       return () => unsubscribe();
     }, []);
@@ -89,7 +74,6 @@ export const AuthContextProvider: FC<AuthProviderProps> = ({ children }) => {
               break;
             default:
               setError('Error signing in.');
-              console.log(error)
           }
         } else {
           setError('Unexpected error.');
@@ -116,7 +100,6 @@ export const AuthContextProvider: FC<AuthProviderProps> = ({ children }) => {
               break;
             default:
               setError('Error signing in.');
-              console.log(error)
           }
         } else {
           setError('Unexpected error.');

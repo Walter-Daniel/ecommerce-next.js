@@ -38,10 +38,6 @@ export default function RegisterPage() {
     reset()
   }
 
-  if(loading){
-    return <p>...loading</p>
-  }
-
   return (
     <div className="bg-top bg-no-repeat bg-cover h-screen" style={{ backgroundImage: 'url(/auth.jpg)' }}>
       <div className="lg:pr-44 w-[100%] h-[100%] flex justify-center lg:justify-end items-center p-40">

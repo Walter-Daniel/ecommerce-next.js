@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ProductCard from "@/components/ProductCard"
 import { collection, getDoc, getDocs } from "firebase/firestore";
-import { firestore as db} from "@/app/firebase"
+import { db } from "@/app/firebase"
 import addMultipleProducts from "@/utils/firebase"
 import Link from 'next/link';
 
