@@ -1,40 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-commerce App 🛍️
 
-## Getting Started
+This is an E-commerce web application project developed with Next.js 14, Firebase, and TypeScript. It provides functionalities such as user registration, login, shopping cart, product details, among others.
 
-First, run the development server:
+## Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Next.js 14](https://nextjs.org/) - React Framework.
+- [Firebase](https://firebase.google.com/) - App development platform.
+- [TypeScript](https://www.typescriptlang.org/) - Programming language.
+- [@hookform/resolvers](https://react-hook-form.com/resolver/zod/) - Validation resolvers for React Hook Form.
+- [@nextui-org/react](https://nextui.org/) - UI Components for React.
+- [Framer Motion](https://www.framer.com/motion/) - Animations for React.
+- [React Hook Form](https://react-hook-form.com/) - React forms library.
+- [React Toastify](https://fkhadra.github.io/react-toastify/introduction/) - Toast notifications for React.
+- [Zod](https://github.com/colinhacks/zod) - TypeScript schema validation.
+- [React Icons](https://react-icons.github.io/react-icons/) - Icons for React.
+- [React Slick](https://react-slick.neostack.com/) - Image carousel for React.
+- [Slick Carousel](https://kenwheeler.github.io/slick/) - Image carousel.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Available Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### `npm run dev`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Runs the app in development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Learn More
+### `npm run build`
 
-To learn more about Next.js, take a look at the following resources:
+Builds the app for production.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### `npm start`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Starts a production server with the compiled app.
 
-## Deploy on Vercel
+### `npm run lint`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Runs ESLint to check the code for issues.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Installation
 
+1. Clone this repository on your local machine.
+2. Install dependencies with `npm install`.
 
-some installations
-- npm install react-icons
+## Firebase Setup
+
+1. Create a project in the [Firebase Console](https://console.firebase.google.com/).
+2. Copy your Firebase project configuration (apiKey, authDomain, projectId, etc.) and paste it into your Firebase configuration file in your Next.js application (`firebase.ts` or similar).
+
+## Contributing
+
+Feel free to contribute to this project! Open an issue or send a pull request with your enhancements.
+
+## License
+
+This project is licensed under the MIT License. For more details, see the [LICENSE](LICENSE) file.
+
+## Creators
+
+- [Walter Daniel Carrizo](https://www.linkedin.com/in/walter-daniel-carrizo/) - LinkedIn: [Walter Daniel Carrizo](https://www.linkedin.com/in/walter-daniel-carrizo/)
+- [Cesar Ulises Cappa Subelza](https://www.linkedin.com/in/cesar-ulises-cappa-subelza/) - LinkedIn: [Cesar Ulises Cappa Subelza](https://www.linkedin.com/in/cesar-ulises-cappa-subelza/)
+- [Micaela Uvilla](https://www.linkedin.com/in/micaela-uvilla/) - LinkedIn: [Micaela Uvilla](https://www.linkedin.com/in/micaela-uvilla/)
