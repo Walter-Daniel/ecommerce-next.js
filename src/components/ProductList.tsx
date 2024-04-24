@@ -60,6 +60,9 @@ import Link from 'next/link';
 
 const ProductList = async () => {
 
+    await new Promise(resolve => setTimeout(resolve, 3000))
+
+
     const collectionRef = collection(db, "products" )
     
     const productCollectionSnapshot = await getDocs(collectionRef)
@@ -71,10 +74,6 @@ const ProductList = async () => {
         }
     ))
     
-    console.log(productsData);
-    
-
-
 
   return (
     <div>
