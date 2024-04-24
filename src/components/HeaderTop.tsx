@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState, UseEffect, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import {BsFacebook, BsTwitter, BsInstagram, BsLinkedin} from "react-icons/bs";
 import {Select, SelectItem} from "@nextui-org/react";
 import Link from 'next/link';
