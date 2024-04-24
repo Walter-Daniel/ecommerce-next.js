@@ -10,7 +10,7 @@ import {
   useParams,
 } from "next/navigation";
 import { collection, doc, getDoc } from "firebase/firestore";
-import { firestore as db } from "@/app/firebase";
+import { db } from "@/app/firebase";
 
 const ProductDetail = () => {
   const productId = useParams();

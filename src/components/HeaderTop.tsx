@@ -74,7 +74,7 @@ const HeaderTop = () => {
                   </Link>
                 </>
               ): (
-                <Button onClick={handleLogout} >
+                <Button onClick={handleLogout} variant='bordered' color='danger'>
                     Logout
                 </Button>
               )

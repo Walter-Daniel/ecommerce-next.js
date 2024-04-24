@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
-import { firestore as db } from "@/app/firebase";
+import { db } from "@/app/firebase";
 import { UserAuth } from "@/app/context/AuthProvider";
 import { useRouter } from 'next/navigation'
 interface CartProps {
@@ -74,6 +74,9 @@ const Cart: React.FC<CartProps> = ({ cartOpen, setCartOpen }) => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   };
   const shoppingFinish =async()=>{
+    if(!user){
+      alert("Necesita iniciar sesion primero")
+    }
 
     await setDoc(doc(collection(db, `shop/cart-shop/${user!.uid}`)), {
       cartItems,

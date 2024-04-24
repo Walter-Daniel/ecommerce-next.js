@@ -36,28 +36,32 @@ export default function LoginPage() {
     reset();
   }
 
-  if(loading) {
-    return <p>...loading</p>
-  }
-
   return (
     <div className="bg-top bg-no-repeat bg-cover h-screen" style={{ backgroundImage: 'url(/auth.jpg)' }}>
-      <div className="lg:pr-44 w-[100%] h-[100%] flex justify-center lg:justify-end items-center">
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg mx-5 md:mx-0 p-5 md:p-10 w-[100%] md:w-2/3 lg:w-1/3 rounded-xl shadow-xl fade-in">
-          <div className="flex justify-end mb-5">
-           <Image src='/logo.png' alt="Logo" width={200} height={200} style={{ width: 'auto', height:'auto' }}/>
+      {
+        loading ? (
+        <div className="flex justify-center items-center h-full">
+          <h2 className="text-2xl">Loading...</h2>
+        </div> ):(
+          <div className="lg:pr-44 w-[100%] h-[100%] flex justify-center lg:justify-end items-center">
+                <form onSubmit={handleSubmit(onSubmit)} className="bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg mx-5 md:mx-0 p-5 md:p-10 w-[100%] md:w-2/3 lg:w-1/3 rounded-xl shadow-xl fade-in">
+                <div className="flex justify-end mb-5">
+                <Image src='/logo.png' alt="Logo" width={200} height={200} style={{ width: 'auto', height:'auto' }}/>
+                </div>
+                  <FormAuth register={register} errors={errors}/>
+                  {/* BUTTONS */}
+                  <ButtonForm handleGoogleSignIn={handleGoogleSignIn} />
+                  <div className="flex gap-2 pt-3">
+                    <p className="text-sm">Don't have an account?</p>
+                    <Link href={'/register'} className="underline text-red-500 text-sm">
+                      Sign Up
+                    </Link>
+                  </div>
+              </form>
           </div>
-            <FormAuth register={register} errors={errors}/>
-            {/* BUTTONS */}
-            <ButtonForm handleGoogleSignIn={handleGoogleSignIn} />
-            <div className="flex gap-2 pt-3">
-              <p className="text-sm">Don't have an account?</p>
-              <Link href={'/register'} className="underline text-red-500 text-sm">
-                Sign Up
-              </Link>
-            </div>
-        </form>
-      </div>
+        ) 
+      }
+      
     </div>
   );
 }
