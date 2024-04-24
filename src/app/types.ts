@@ -4,3 +4,10 @@ export type Inputs = {
     displayName: string;
     confirmPassword: string; 
 };
+
+export type Product = {
+    image: string,
+    title: string,
+    description: string,
+    price: number
+}
