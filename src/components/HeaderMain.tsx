@@ -5,6 +5,7 @@ import { BiUser } from "react-icons/bi";
 import { FiHeart } from "react-icons/fi";
 import { LuShoppingCart } from "react-icons/lu";
 import { CartProvider } from "../context/CartContext";
+import Image from "next/image";
 
 import Cart from "./Cart";
 
@@ -19,7 +20,7 @@ const HeaderMain = () => {
     <div className="boder-b border-gray-200 py-6">
       <div className="container sm:flex justify-between items-center">
         <div className="font-bold text-4xl text-center pb-4 sm:pb-0 text-blackish">
-          E-commerce
+          <Image src="/logo.png" alt="Logo" width={200} height={100} />
         </div>
 
         <div className="w-full sm:w-[300px] md:w-[70%] relative">
