@@ -11,11 +11,7 @@ import Footer from "@/components/Footer";
 const Providers: FC<PropsWithChildren> = ({children}) => {
   return (
     <NextUIProvider>
-      <HeaderTop />
-      <HeaderMain />
-      <NavbarSection />
       {children}
-      <Footer />
     </NextUIProvider>
   )
 }
