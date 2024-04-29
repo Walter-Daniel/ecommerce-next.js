@@ -5,6 +5,7 @@ import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
 import { UserAuth } from "@/app/context/AuthProvider";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 interface CartProps {
   cartOpen: Boolean;
   setCartOpen: Function;
@@ -31,7 +32,7 @@ const Cart: React.FC<CartProps> = ({ cartOpen, setCartOpen }) => {
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
     }
-  }, [cartItems]);
+  }, []);
 
   const handleIncreaseQuantity = (index: number): void => {
     const newCartItems: CartItemsProps[] = [...cartItems];
@@ -82,7 +83,7 @@ const Cart: React.FC<CartProps> = ({ cartOpen, setCartOpen }) => {
       amount: totalPrice,
     });
     localStorage.removeItem("cart");
-    alert("Your purchase has been made successfully");
+    toast.success("Your purchase has been made successfully");
     router.push("/");
     setCartOpen(!cartOpen);
   };
@@ -92,7 +93,7 @@ const Cart: React.FC<CartProps> = ({ cartOpen, setCartOpen }) => {
         cartOpen ? "transform translate-x-0 " : "transform translate-x-full"
       }`}
     >
-      <div className="bg-gray-100 py-4 px-6 overflow-y-auto max-h-[calc(100vh-0rem)]   justify-between  ">
+      <div className="bg-gray-100 py-4 px-6 overflow-y-auto max-h-[calc(100vh-0rem)] h-screen   justify-between  ">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold   ">Cart</h2>
           <RxCross1
