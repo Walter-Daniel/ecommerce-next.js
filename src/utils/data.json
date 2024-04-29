@@ -1,65 +1,44 @@
 [
   {
-      "image": "https://images.unsplash.com/photo-1597045566677-8cf032ed6634?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "title": "Nike Air Jordan",
-      "description": "Inspired by the original AJ1",
+      "image": "https://images.unsplash.com/photo-1593287073863-c992914cb3e3?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "title": "Adidas SuperStar",
+      "description": "Classic addidas shoes",
       "genre": "Men",
       "category": "footwear",
       "hot-offer": false,
-      "price": 180.00
+      "price": 280.00,
+      "quantity": 1,
+      "id": 5
     },
     {
-      "image": "https://images.unsplash.com/photo-1563178406-4cdc2923acbc?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "title": "Vestido floral",
-      "description": "Vestido veraniego con estampado floral",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_628416-MLA72367737056_102023-O.webp",
+      "title": "Beauty black dress",
+      "description": "Summer dress with comfortable black",
       "genre": "Women",
       "category": "dress",
       "hot-offer": true,
-      "price": 45.99
+      "price": 65.99,
+      "quantity": 2,
+      "id": 6
     },
     {
-      "image": "https://images.unsplash.com/photo-1556306535-0f09a537f0a3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "title": "Gorra ajustable",
-      "description": "Gorra deportiva ajustable con logo bordado",
+      "image": "https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "title": "Italian mafia type hat",
+      "description": "Gray Italian mafia hat with black embroidery",
       "genre": "Unisex",
       "category": "accessories",
       "hot-offer": true,
-      "price": 25.50
+      "price": 34.50,
+      "quantity":3
     },
     {
-      "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "title": "Remera blanca unisex",
-      "description": "Remera de algodón con corte clásico y color blanco.",
+      "image": "https://acdn.mitiendanube.com/stores/029/842/products/nirvana1-2d1bbed349758198e516166141022282-640-0.jpg",
+      "title": "Nirvana T-shirt",
+      "description": "Cotton T-shirt with a classic cut and a black Nirvana rocker color..",
       "genre": "Unisex",
       "category": "shirt",
       "hot-offer": false,
-      "price": 19.99
-    },
-    {
-      "image": "https://www.shutterstock.com/image-vector/online-delivery-phone-service-yellow-260nw-1929403586.jpg",
-      "title": "Fast Shipping",
-      "description": "For a better experience, you can contract the express shipping service to enjoy your purchase faster.",
-      "genre": "unisex",
-      "category": "services",
-      "hot-offer": false,
-      "price": 0
-    },
-    {
-      "image": "https://img.freepik.com/vector-premium/sello-garantia-calidad-etiqueta-garantia-calidad-signo-diseno-plano-ilustracion-vectorial_476325-329.jpg",
-      "title": "Extended warranty",
-      "description": "Add extra protection to your purchase with our extended warranty. Buy with peace of mind!",
-      "genre": "unisex",
-      "category": "services",
-      "hot-offer": false,
-      "price": 0
-    },
-    {
-      "image": "https://www.shutterstock.com/image-vector/24-hours-order-execution-delivery-600nw-2332460223.jpg",
-      "title": "24 Hour Attention",
-      "description": "We are available 24 hours a day to provide you with care and support. Contact us at any time!",
-      "genre": "unisex",
-      "category": "services",
-      "hot-offer": false,
-      "price": 0
+      "price": 15.99,
+      "quantity":4
     }
 ]
