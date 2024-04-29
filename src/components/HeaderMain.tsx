@@ -34,6 +34,13 @@ const HeaderMain = () => {
           <div className="sm:hidden text-gray-500 text-[30px] gap-4">
             <LuShoppingCart onClick={handleCart} />
           </div>
+          {cartOpen ? (
+              <div>            
+                  <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />             
+              </div>
+            ) : (
+              ""
+            )}
         </div>
 
         <div className="w-full sm:w-[300px] md:w-[70%] relative">
