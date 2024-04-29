@@ -4,7 +4,6 @@ import { BsSearch } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
 import { FiHeart } from "react-icons/fi";
 import { LuShoppingCart } from "react-icons/lu";
-import { CartProvider } from "../context/CartContext";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -68,9 +67,9 @@ const HeaderMain = () => {
             </div> */}
             {cartOpen ? (
               <div>
-                <CartProvider>
+            
                   <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />
-                </CartProvider>
+             
               </div>
             ) : (
               ""
