@@ -19,7 +19,9 @@ const ProductFilter: React.FC = async ({ params }) => {
     try {
       productsData = await firebase.filterByCategory(filter);
     } catch {
-      console.log("No hay categoria con:", filter);
+      throw new Error("Error message del producto que no se ontro")
+      
+      
     }
   }
 

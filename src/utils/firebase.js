@@ -1,74 +1,85 @@
-import { collection, doc, writeBatch,query, where, getDocs} from "firebase/firestore"
-import { db } from "@/app/firebase"
-import products from "./data.json"
-
+import { collection, doc, writeBatch, query, where, getDocs } from "firebase/firestore";
+import { db } from "@/app/firebase";
+import products from "./data.json";
 
 const addMultipleProducts = async () => {
-    const batch = writeBatch(db)
-
-
-    products.forEach(product => {
-        const productData = {
-            ...product,
-
-        }
-
-        const docRef = doc(collection(db, 'products'))
-        batch.set(docRef, productData)
-    });
-
-    await batch.commit()
-}
+    try {
+        const batch = writeBatch(db);
+        products.forEach(product => {
+            const productData = {
+                ...product,
+            };
+            const docRef = doc(collection(db, 'products'));
+            batch.set(docRef, productData);
+        });
+        await batch.commit();
+    } catch (error) {
+        throw new Error("Error adding multiple products: " + error.message);
+    }
+};
 
 const filterByGenre = async (filter) => {
-    let genreFilter;
-    if (filter === "men") {
-      genreFilter = ["Men", "Unisex"];
-    } else if (filter === "women") {
-      genreFilter = ["Women", "Unisex"];
-    } else {
-      return [];
+    try {
+        let genreFilter;
+        if (filter === "men") {
+            genreFilter = ["Men", "Unisex"];
+        } else if (filter === "women") {
+            genreFilter = ["Women", "Unisex"];
+        } else {
+            return [];
+        }
+        const q = query(collection(db, "products"), where("genre", "in", genreFilter));
+        const productCollectionSnapshot = await getDocs(q);
+        const products = productCollectionSnapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+        }));
+        return products;
+    } catch (error) {
+        throw new Error("Error filtering products by genre: " + error.message);
     }
-  
-    const q = query(collection(db, "products"), where("genre", "in", genreFilter));
-    const productCollectionSnapshot = await getDocs(q);
-    const products = productCollectionSnapshot.docs.map(doc => ({
-      ...doc.data(),
-      id: doc.id
-    }));
-    return products;
 };
 
 const filterByCategory = async (filter) => {
-    const q = query(collection(db, "products"), where("category", "==", filter))
-    const productCollectionSnapshot = await getDocs(q)
-    const products = productCollectionSnapshot.docs.map(doc => ({
-        ...doc.data(),
-        id: doc.id
-    }))
-    return products
-}
+    try {
+        const q = query(collection(db, "products"), where("category", "==", filter));
+        const productCollectionSnapshot = await getDocs(q);
+        const products = productCollectionSnapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+        }));
+        return products;
+    } catch (error) {
+        throw new Error("Error filtering products by category: " + error.message);
+    }
+};
 
 const filterByOffers = async () => {
-    const q = query(collection(db, "products"), where("hot-offer", "==", true))
-    const productCollectionSnapshot = await getDocs(q)
-    const products = productCollectionSnapshot.docs.map(doc => ({
-        ...doc.data(),
-        id: doc.id
-    }))
-    return products
-}
+    try {
+        const q = query(collection(db, "products"), where("hot-offer", "==", true));
+        const productCollectionSnapshot = await getDocs(q);
+        const products = productCollectionSnapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+        }));
+        return products;
+    } catch (error) {
+        throw new Error("Error filtering products by offers: " + error.message);
+    }
+};
 
 const searchProduct = async (word) => {
-    const q = query(collection(db, "products"));
-    const productCollectionSnapshot = await getDocs(q);
-    const products = productCollectionSnapshot.docs.map(doc => ({
-        ...doc.data(),
-        id: doc.id
-    }));
+    try {
+        const q = query(collection(db, "products"));
+        const productCollectionSnapshot = await getDocs(q);
+        const products = productCollectionSnapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+        }));
+        return products;
+    } catch (error) {
+        throw new Error("Error searching for products: " + error.message);
+    }
+};
 
-    return products;
-}
-
-
-export default { addMultipleProducts,filterByCategory, filterByOffers, filterByGenre, searchProduct }
+export default { addMultipleProducts, filterByCategory, filterByOffers, filterByGenre, searchProduct };
