@@ -6,7 +6,7 @@ import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, Navba
 const NavbarSection = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const navList = ['HOME', 'CATEGORIES', 'MEN', 'WOMEN', 'HOT OFFERS'];
+  const navList = ['HOME', 'CATEGORIES', 'MEN', 'WOMEN', 'HOT OFFERS',];
   const categories = ['dress', 'footwear', 'accessories', 'shirt'];
 
   const categoriesRef = useRef(null); // Referencia al menú de categorías
