@@ -1,14 +1,27 @@
 import React from 'react'
 import { BiPurchaseTag } from "react-icons/bi";
 
-interface Purchase {
-    products: { [productName: string]: number };
-    amount: number;
-}
-
 interface PurchaseProps {
     purchases: Purchase[]
 }
+
+export interface Purchase {
+    amount:    number;
+    cartItems: CartItem[];
+}
+
+export interface CartItem {
+    genre:       string;
+    category:    string;
+    description: string;
+    id:          number;
+    quantity:    number;
+    price:       number;
+    title:       string;
+    image:       string;
+    "hot-offer": boolean;
+}
+
 
 export const Purchases: React.FC<PurchaseProps> = ({purchases}) => {
   return (
@@ -27,12 +40,16 @@ export const Purchases: React.FC<PurchaseProps> = ({purchases}) => {
                    
                         <div key={index} className="text-gray-700 border-[1px] my-2">
     
-                            {Object.entries(purchase.products).map(([productName, quantity]) => (
-                                <div className="grid grid-cols-2" key={productName}>
-                                    <div className="px-4 py-2 font-semibold">{productName}</div>
-                                    <div className="px-4 py-2">{quantity}</div>
-                                </div>
-                            ))}
+                            {
+                                purchase.cartItems.map(item => (
+                                    <div className="grid grid-cols-2" key={item.id}>
+                                        <div className="px-4 py-2 font-semibold">{item.title}</div>
+                                        <div className="px-4 py-2">{item.quantity}</div>
+                                    </div>
+                                ))
+                            }
+                                
+                        
     
                             <div className="flex justify-end">
                                     <div className="px-4 py-2 font-semibold">Amount</div>

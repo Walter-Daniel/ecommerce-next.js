@@ -1,28 +1,55 @@
 import React from 'react';
-import data from '@/utils/data.json'; 
 
-const ServicesPage = () => {
-  // Filtrar los servicios por las categorías deseadas
-  const filteredServices = data.filter((service: any) => (
-    service.category === 'services' && // Solo servicios
-    ['Fast Shipping', 'Extended warranty', '24 Hour Attention'].includes(service.title) // Solo los títulos específicos
-  ));
+interface Post {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+
+interface PostProps {
+  posts: Post[];
+}
+
+const getPost = async (): Promise<PostProps> => {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users/1/posts');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const posts: Post[] = await response.json();
+    return { posts };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return { posts: [] };
+  }
+};
+
+
+const ServicesPage = async() => {
+
+  const response = await getPost();
 
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-3xl font-bold mt-8 mb-4">Services</h1>
-      <ul className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredServices && filteredServices.map((service: any, index: number) => (
-          <li key={index} className="p-4 bg-gray-100 rounded-md">
-            <strong className="block text-lg mb-2">{service.title}</strong>
-            <img src={service.image} alt={service.title} className="h-40 w-full object-cover rounded-md" />
-            <p className="text-gray-700">{service.description}</p>
-            <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md">Hire</button>
-          </li>
-        ))}
-      </ul>
-      <br />
+      <h2 className='text-2xl'>Personalized Style Advisory Service</h2>
+      <p>In the fast-paced world of fashion, finding the perfect style can be overwhelming. That's why we offer personalized style advice. Whether through smart algorithms or professional stylists, our goal is to make the shopping experience unique for each customer. We'll explore how this service not only enhances the shopping experience but also strengthens the relationship with our brand, fostering customer loyalty.</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-5">
+        {
+          response.posts.map((post) => (
+            <div key={post.id} className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
+              <p className="text-gray-700">{post.body}</p>
+              <div className="mt-4 flex justify-end">
+              </div>
+            </div>
+
+          ))
+        }
+      </div>
     </div>
+    
   );
 };
 

@@ -1,16 +1,28 @@
 'use client'
 
-import { collection, doc, getDocs, onSnapshot, setDoc } from "firebase/firestore";
+import { useEffect, useRef, useState } from "react";
+import { collection, getDocs, onSnapshot} from "firebase/firestore";
 import { db } from '../../firebase';
 import { Purchases } from "@/components/Purchases";
 import { UserAuth } from "../../context/AuthProvider";
 import { Profile } from "@/components/Profile";
-import { useEffect, useRef, useState } from "react";
 import { redirect } from "next/navigation";
 
-interface PurchaseProps {
-    products: { [productName: string]: number };
-    amount: number;
+export interface PurchaseProps {
+  amount:    number;
+  cartItems: CartItem[];
+}
+
+export interface CartItem {
+  genre:       string;
+  category:    string;
+  description: string;
+  id:          number;
+  quantity:    number;
+  price:       number;
+  title:       string;
+  image:       string;
+  "hot-offer": boolean;
 }
 
 export default function ProfilePage() {
@@ -28,6 +40,7 @@ export default function ProfilePage() {
         try {
           const querySnapshot = await getDocs(collectionRef);
           const fetchedPurchases: PurchaseProps[] = querySnapshot.docs.map((doc) => doc.data() as PurchaseProps);
+          console.log(querySnapshot)
           setPurchases(fetchedPurchases);
         } catch (error) {
           console.error('Error fetching purchases:', error);
