@@ -7,7 +7,7 @@ import Link from 'next/link';
 const NavbarSection = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const navList = ['HOME', 'CATEGORIES', 'MEN', 'WOMEN', 'HOT OFFERS',];
+  const navList = ['HOME', 'CATEGORIES', 'MEN', 'WOMEN', 'HOT OFFERS','SERVICES'];
   const categories = ['dress', 'footwear', 'accessories', 'shirt'];
 
   const categoriesRef = useRef(null); // Referencia al menú de categorías
@@ -62,11 +62,15 @@ const NavbarSection = () => {
                 )}
               </div>
             ) : (
-    
-              <Link color="foreground" href={`/products/${navItem.toLowerCase()}`} className='navbar__link relative'>
+              navItem == "SERVICES" ? (
+                <Link color="foreground" href={`/${navItem.toLowerCase()}`} className='navbar__link relative'>
                 {navItem}
               </Link>
-              
+              ) : (
+                <Link color="foreground" href={`/products/${navItem.toLowerCase()}`} className='navbar__link relative'>
+                {navItem}
+              </Link>
+              )
             )}
           </NavbarItem>
         ))}

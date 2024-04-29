@@ -82,8 +82,8 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="rounded-md shadow-lg border-3 border-gray-200 p-4 md:my-12 md:w-4/5">
+    <div className="flex justify-center items-center min-h-[80vh] mb-24">
+      <div className="rounded-md shadow-lg border-3 border-gray-200 md:mb-12 md:w-4/5">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/2 md:mr-8 mb-4 md:mb-0">
             <p className="text-[#D90429] justify-start md:hidden">
