@@ -6,6 +6,7 @@ import { db } from "@/app/firebase";
 
 import { UserAuth } from "@/app/context/AuthProvider";
 import SkeletonProductDetail from "@/components/Skeleton";
+import { toast } from "react-toastify";
 
 interface Product {
   category: string;
@@ -65,14 +66,16 @@ const ProductDetail = () => {
       (item: Product) => item.id === product.id
     );
     if (isProductInCart) {
-      alert("This products is already added!");
+      toast.error("This products is already added!");
     } else {
       if (!user) {
-        alert("Necesita iniciar sesión primero");
+        toast.error("You need to log in first");
       } else {
         cart.push(product);
         localStorage.setItem("cart", JSON.stringify(cart));
-        alert("Add to Cart successful!");
+     
+ 
+        toast.success('Add to Cart successful!');
       }
     }
   };
@@ -82,7 +85,7 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center ">
       <div className="rounded-md shadow-lg border-3 border-gray-200 p-4 md:my-12 md:w-4/5">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/2 md:mr-8 mb-4 md:mb-0">
