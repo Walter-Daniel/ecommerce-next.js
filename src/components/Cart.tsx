@@ -31,7 +31,7 @@ const Cart: React.FC<CartProps> = ({ cartOpen, setCartOpen }) => {
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
     }
-  }, []);
+  }, [cartItems]);
 
   const handleIncreaseQuantity = (index: number): void => {
     const newCartItems: CartItemsProps[] = [...cartItems];
