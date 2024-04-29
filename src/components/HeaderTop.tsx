@@ -53,16 +53,6 @@ const HeaderTop = () => {
       </strong>
           </div>
           <div className='flex gap-4'>
-            {/* <select name="currency" id="currency" className='text-gray-500 text-xs w-24 border border-gray-300 rounded-md py-1 px-3 cursor-pointer'>
-              <option value="USD $">USD $</option>
-              <option value="EUR $">EUR €</option>
-              <option value="PesoArg ARS">Peso ARS</option>
-            </select>
-
-            <select name="language" id="language" className='text-gray-500 text-xs w-24 border border-gray-300 rounded-md py-2 px-3 cursor-pointer'>
-              <option value="English">English</option>
-              <option value="Spanish">Spanish</option>
-            </select> */}
             {
               loading ? null : (!user) ? (
                 <>

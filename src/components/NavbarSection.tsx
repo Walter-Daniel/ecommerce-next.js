@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react';
-import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react"
+import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Button} from "@nextui-org/react"
+import Link from 'next/link';
 
 const NavbarSection = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -40,9 +41,9 @@ const NavbarSection = () => {
             {navItem === 'CATEGORIES' ? (
               
               <div className="relative" ref={categoriesRef}>
-                <Link color="foreground" className="navbar__link relative" onClick={handleCategoriesClick}>
+                <div color="foreground" className="navbar__link relative" onClick={handleCategoriesClick}>
                   {navItem}
-                </Link>
+                </div>
 
                 {/* Menú desplegable de categorías */}
 
@@ -50,7 +51,9 @@ const NavbarSection = () => {
                   <ul className="absolute left-0 mt-2 bg-white shadow-lg rounded-md">
                     {categories.map((cate) => (
                       <li className="py-2 px-4">
-                        <Link href={`/products/${cate}`} color="foreground" className="navbar__link relative">
+                        <Link href={`/products/${cate}`} color="foreground" className="navbar__link relative"
+                        onClick={handleCategoriesClick}
+                        >
                           {cate.charAt(0).toUpperCase() + cate.slice(1)}
                         </Link>
                       </li>
@@ -84,7 +87,6 @@ const NavbarSection = () => {
               href={
                 index != 1 ? `/products/${item.toLowerCase()}` : "#"
               }
-              size="lg"
             >
               {item}
             </Link>

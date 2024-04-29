@@ -4,26 +4,16 @@ import ProductCard from '@/components/ProductCard';
 import { redirect } from "next/navigation";
 import firebase from '@/utils/firebase';
 
-const ProductFilter: React.FC = async ({ params }) => {
-  const filter = params.productFilter;
+const ProductSearch: React.FC = async ({ params }) => {
+  const filter = params.productSearch;
 
-  let productsData;
-
-  if(filter === "women" || filter === "men") {
-    productsData = await firebase.filterByGenre(filter);
-  } else if(filter === "hot%20offers") {
-    productsData = await firebase.filterByOffers();
-  } else if(filter === "home") {
-    redirect("/");
-  } else {
-    try {
-      productsData = await firebase.filterByCategory(filter);
-    } catch {
-      throw new Error("Error message del producto que no se ontro")
-      
-      
-    }
-  }
+  let productsData = await firebase.searchProduct(filter)
+  
+  const filteredData = productsData.filter(product =>
+    product.title.toLowerCase().includes(filter.toLowerCase()) ||
+    product.description.toLowerCase().includes(filter.toLowerCase())
+  );
+  
 
   return (
     <main>
@@ -33,7 +23,7 @@ const ProductFilter: React.FC = async ({ params }) => {
         </h2>
 
         <div className='grid grid-cols-1 place-items-center sm:place-items-start sm:grid-cols-2 ls:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-x-20 xl:gap-y-10'>
-          {productsData && productsData.map((product) => (
+          {filteredData && filteredData.map((product) => (
             <Link href={`/detail/${product.id}`} key={product.id}>
               <ProductCard
                 image={product.image}
@@ -49,4 +39,4 @@ const ProductFilter: React.FC = async ({ params }) => {
   );
 };
 
-export default ProductFilter;
+export default ProductSearch;
