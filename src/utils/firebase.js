@@ -1,23 +1,100 @@
-import { collection, doc, writeBatch,} from "firebase/firestore"
-import { firestore as db } from "@/app/firebase"
-import products from "./data.json"
-
+import { collection, doc, writeBatch, query, where, getDocs } from "firebase/firestore";
+import { db } from "@/app/firebase";
+import products from "./data.json";
 
 const addMultipleProducts = async () => {
-    const batch = writeBatch(db)
+    try {
+        const batch = writeBatch(db);
+        products.forEach(product => {
+            const productData = {
+                ...product,
+            };
+            const docRef = doc(collection(db, 'products'));
+            batch.set(docRef, productData);
+        });
+        await batch.commit();
+    } catch (error) {
+        throw new Error("Error adding multiple products: " + error.message);
+    }
+};
 
-
-    products.forEach(product => {
-        const productData = {
-            ...product,
-
+const filterByGenre = async (filter) => {
+    try {
+        let genreFilter;
+        if (filter === "men") {
+            genreFilter = ["Men", "Unisex"];
+        } else if (filter === "women") {
+            genreFilter = ["Women", "Unisex"];
+        } else {
+            return [];
         }
+        const q = query(collection(db, "products"), where("genre", "in", genreFilter));
+        const productCollectionSnapshot = await getDocs(q);
+        const products = productCollectionSnapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+        }));
+        return products;
+    } catch (error) {
+        throw new Error("Error filtering products by genre: " + error.message);
+    }
+};
 
-        const docRef = doc(collection(db, 'products'))
-        batch.set(docRef, productData)
-    });
+const filterByCategory = async (filter) => {
+    try {
+        const q = query(collection(db, "products"), where("category", "==", filter));
+        const productCollectionSnapshot = await getDocs(q);
+        const products = productCollectionSnapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+        }));
+        return products;
+    } catch (error) {
+        throw new Error("Error filtering products by category: " + error.message);
+    }
+};
 
-    await batch.commit()
-}
+const filterByOffers = async () => {
+    try {
+        const q = query(collection(db, "products"), where("hot-offer", "==", true));
+        const productCollectionSnapshot = await getDocs(q);
+        const products = productCollectionSnapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+        }));
+        return products;
+    } catch (error) {
+        throw new Error("Error filtering products by offers: " + error.message);
+    }
+};
 
-export default addMultipleProducts
+const searchProduct = async (word) => {
+    try {
+        const q = query(collection(db, "products"));
+        const productCollectionSnapshot = await getDocs(q);
+        const products = productCollectionSnapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+        }));
+        return products;
+    } catch (error) {
+        throw new Error("Error searching for products: " + error.message);
+    }
+};
+
+export const fetchServices = async () => {
+    try {
+      // Aquí deberías obtener tus servicios desde el archivo data.json o desde tu servidor
+      const response = await fetch('/api/services');
+      if (!response.ok) {
+        throw new Error('Failed to fetch services');
+      }
+      const services = await response.json();
+      return services;
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      throw error;
+    }
+  };
+
+export default { addMultipleProducts, filterByCategory, filterByOffers, filterByGenre, searchProduct, fetchServices };
