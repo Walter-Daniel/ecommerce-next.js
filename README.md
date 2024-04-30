@@ -56,6 +56,7 @@ This project is licensed under the MIT License. For more details, see the [LICEN
 
 ## Creators
 
-- [Walter Daniel Carrizo](https://www.linkedin.com/in/walter-daniel-carrizo/) - LinkedIn: [Walter Daniel Carrizo](https://www.linkedin.com/in/walter-daniel-carrizo/)
-- [Cesar Ulises Cappa Subelza](https://www.linkedin.com/in/cesar-ulises-cappa-subelza/) - LinkedIn: [Cesar Ulises Cappa Subelza](https://www.linkedin.com/in/cesar-ulises-cappa-subelza/)
-- [Micaela Uvilla](https://www.linkedin.com/in/micaela-uvilla/) - LinkedIn: [Micaela Uvilla](https://www.linkedin.com/in/micaela-uvilla/)
+- Cesar Ulises Cappa Subelza - LinkedIn: [Cesar Ulises Cappa Subelza](https://www.linkedin.com/in/cesar-ulises-cappa-subelza/)
+- Micaela Uvilla - LinkedIn: [Micaela Uvilla](https://www.linkedin.com/in/micaela-uvilla/)
+- Walter Daniel Carrizo - LinkedIn: [Walter Daniel Carrizo](https://www.linkedin.com/in/walter-daniel-carrizo/)
+- Agustina Batalla
