@@ -143,7 +143,7 @@ const Cart: React.FC<CartProps> = ({ cartOpen, setCartOpen }) => {
                         </button>
                       </div>
                     </div>
-                    <div className="flex flex-col items-end  text-sm md:ml-10  ">
+                    <div className="flex flex-col items-end text-sm ml-10 md:ml-0">
                       <button
                         className="text-[#D90429]  "
                         onClick={() =>
