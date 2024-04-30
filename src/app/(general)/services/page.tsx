@@ -32,9 +32,11 @@ const ServicesPage = async() => {
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-3xl font-bold mt-8 mb-4">Services</h1>
-      <h2 className='text-2xl'>Personalized Style Advisory Service</h2>
+     <h1 className="text-3xl font-bold mt-8 mb-4">Services</h1>
+     <div className='bg-black text-white p-4 mb-2'>
+      <h2 className='text-2xl py-2'>Personalized Style Advisory Service</h2>
       <p>In the fast-paced world of fashion, finding the perfect style can be overwhelming. That's why we offer personalized style advice. Whether through smart algorithms or professional stylists, our goal is to make the shopping experience unique for each customer. We'll explore how this service not only enhances the shopping experience but also strengthens the relationship with our brand, fostering customer loyalty.</p>
+     </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-5">
         {
           response.posts.map((post) => (

@@ -85,8 +85,8 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-[80vh] mb-24">
-      <div className="rounded-md shadow-lg border-3 border-gray-200 md:mb-12 md:w-4/5">
+    <div className="flex justify-center items-center min-h-[80vh] mb-4 md:mb-0">
+      <div className="rounded-md shadow-lg border-3 border-gray-200 md:w-4/5 px-3 pt-4">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/2 md:mr-8 mb-4 md:mb-0">
             <p className="text-[#D90429] justify-start md:hidden">
@@ -124,7 +124,7 @@ const ProductDetail = () => {
             <p className="text-gray-500 mb-2">{product.description}</p>
             <button
               onClick={addToCart}
-              className="rounded-xl uppercase  h-12 self-center border-[#D90429] border-2 w-full"
+              className="rounded-xl uppercase h-12 self-center border-[#D90429] border-2 w-full"
             >
               Add to Bag
             </button>
